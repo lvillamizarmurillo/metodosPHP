@@ -1,16 +1,29 @@
 <?php
     session_start();
-    $eleccion = strtolower($_POST['alien']);
-    if ($_POST['listar'] == "Sume"){
-        if(isset($_SESSION['s1'])){
-            array_push($_SESSION['s1'],$eleccion);
-        }else{
-            $_SESSION['s1'] = array($eleccion);
+    function agragaPlanetas($texto,$campo,$osol){
+        $eleccion = strtolower($_POST[$osol]);
+        if ($_POST[$campo] == "Sume"){
+            if(isset($_SESSION[$texto])){
+                array_push($_SESSION[$texto],$eleccion);
+            }else{
+                $_SESSION[$texto] = array($eleccion);
+            };
+        }else if($_POST[$campo] == "non"){
+            $_SESSION[$texto] = null;
         };
-    }else if($_POST['listar'] == "non"){
-        $_SESSION['s1'] = null;
+    };
+    if($_POST['listar1'] == "Sume"){
+        agragaPlanetas('s1','listar1','alien1');
+    }else if($_POST['listar1'] == "non"){
+        agragaPlanetas('s1','listar1','alien1');
+    };
+    if($_POST['listar2'] == "Sume"){
+        agragaPlanetas('s2','listar2','alien2');
+    }else if($_POST['listar2'] == "non"){
+        agragaPlanetas('s2','listar2','alien2');
     };
     var_dump($_SESSION['s1']);
+    var_dump($_SESSION['s2']);
 ?>
 
 <!DOCTYPE html>
@@ -24,12 +37,15 @@
 </head>
 <body>
     <form method="POST">
-        <h4>Digite el nombre de la especie del alien: </h4>
-        <input type="text" name="alien" placeholder="Digite el nombre de la especie del alien">
-        <button name="listar" value="Sume">Sumar</button>
-        <button name="listar" value="non">Eliminar todos los aliens</button>
+        <h4>Digite planetas para calcular los comunes en ambos sistemas: </h4>
+        <input type="text" name="alien1" placeholder="Agregue un planeta al sistema solar #1">
+        <button name="listar1" value="Sume">Sumar</button>
+        <button name="listar1" value="non">Eliminar todos los planetas del primer sistema solar</button><br>
+        <input type="text" name="alien2" placeholder="Agregue un planeta al sistema solar #2">
+        <button name="listar2" value="Sume">Sumar</button>
+        <button name="listar2" value="non">Eliminar todos los planetas del segundo sistema solar</button>
     </form>
-    <form action="Punto9.php" method="POST">
+    <form action="Punto10.php" method="POST">
         <button type="submit">Revisar</button>
     </form>
 </body>
