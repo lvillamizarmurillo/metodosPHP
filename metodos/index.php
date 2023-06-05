@@ -33,7 +33,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilo.css">
-    <title>Especies</title>
+    <title>Planetas</title>
 </head>
 <body>
     <form method="POST">
@@ -45,7 +45,7 @@
         <button name="listar2" value="Sume">Sumar</button>
         <button name="listar2" value="non">Eliminar todos los planetas del segundo sistema solar</button>
     </form>
-    <form action="Punto10.php" method="POST">
+    <form action="Punto11.php" method="POST">
         <button type="submit">Revisar</button>
     </form>
 </body>
