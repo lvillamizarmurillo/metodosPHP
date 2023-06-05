@@ -6,12 +6,13 @@
         if(isset($_SESSION['s1'][$gt])){
             array_push($_SESSION['s1'][$gt],$eleccion);
         }else{
-            $_SESSION['s1'] = array('planeta1'=>array(),'planeta2'=>array(),'planeta3'=>array());
+            $_SESSION['s1'][$gt] = array();
             array_push($_SESSION['s1'][$gt],$eleccion);
         };
     }else if($_POST['listar1'] == "non"){
         $_SESSION['s1'] = null;
     };
+    var_dump($_SESSION['s1']);
 ?>
 
 <!DOCTYPE html>
@@ -30,10 +31,12 @@
             <option value="planeta1">Planeta 1</option>
             <option value="planeta2">Planeta 2</option>
             <option value="planeta3">Planeta 3</option>
+            <option value="planeta4">Planeta 4</option>
+            <option value="planeta5">Planeta 5</option>
         </select>
         <input type="text" name="alien1" placeholder="Agregue un satelite al planeta: ">
         <button name="listar1" value="Sume">Sumar</button>
-        <button name="listar1" value="non">Eliminar todos los planetas del primer sistema solar</button><br>
+        <button name="listar1" value="non">Eliminar todos los satelites de los planetas</button><br>
     </form>
     <form action="Punto12.php" method="POST">
         <button type="submit">Revisar</button>
